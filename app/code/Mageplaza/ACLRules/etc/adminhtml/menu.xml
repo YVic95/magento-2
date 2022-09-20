@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_ACLRules::menu" title="Custom Menu" module="Mageplaza_ACLRules" sortOrder="10" resource="Mageplaza_ACLRules::menu" />
+        <add id="Mageplaza_ACLRules::create" title="Create" module="Mageplaza_ACLRules" sortOrder="10" parent="Mageplaza_ACLRules::menu" action="custommenu/create/index" resource="Mageplaza_ACLRules::create"/>
+        <add id="Mageplaza_ACLRules::delete" title="Delete" module="Mageplaza_ACLRules" sortOrder="20" parent="Mageplaza_ACLRules::menu" action="custommenu/delete/index" resource="Mageplaza_ACLRules::delete"/>
+        <add id="Mageplaza_ACLRules::view" title="View" module="Mageplaza_ACLRules" sortOrder="30" parent="Mageplaza_ACLRules::menu" action="custommenu/view/index" resource="Mageplaza_ACLRules::view"/>
+    </menu> 
+</config>
