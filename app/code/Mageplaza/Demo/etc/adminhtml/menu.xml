@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_Demo::menu" title="Custom Menu" module="Mageplaza_Demo" sortOrder="10" resource="Mageplaza_Demo::menu" />
+        <add id="Mageplaza_Demo::create" title="Create" module="Mageplaza_Demo" sortOrder="10" parent="Mageplaza_Demo::menu" action="demo/create/index" resource="Mageplaza_Demo::create"/>
+    </menu> 
+</config>

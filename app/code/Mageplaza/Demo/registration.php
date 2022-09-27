@@ -1,6 +1,6 @@
 <?php
 \Magento\Framework\Component\ComponentRegistrar::register(
 	\Magento\Framework\Component\ComponentRegistrar::MODULE,
-	'Mageplaza_ACLRules',
+	'Mageplaza_Demo',
 	__DIR__
 );
