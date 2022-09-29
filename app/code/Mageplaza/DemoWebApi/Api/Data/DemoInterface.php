@@ -44,7 +44,7 @@ interface DemoInterface
     /**
      * Set title
      *
-     * @param int $title
+     * @param string $title
      * @return \Mageplaza\DemoWebApi\Api\Data\DemoInterface
      */
     public function setTitle($title);
@@ -52,7 +52,7 @@ interface DemoInterface
     /**
      * Set content
      *
-     * @param int $content
+     * @param string $content
      * @return \Mageplaza\DemoWebApi\Api\Data\DemoInterface
      */
     public function setContent($content);
