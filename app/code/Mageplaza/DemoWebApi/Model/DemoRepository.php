@@ -11,6 +11,8 @@ use Mageplaza\DemoWebApi\Api\Data\DemoInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\CouldNotDeleteException;
 
 class DemoRepository implements DemoRepositoryInterface
 {
@@ -67,5 +69,53 @@ class DemoRepository implements DemoRepositoryInterface
             throw new NoSuchEntityException(__('Box with id "%1" does not exist'));
         }
         return $box;
+    }
+
+    /**
+     * Retrieve item boxes matching the specified criteria.
+     *
+     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+     * @return \Mageplaza\DemoWebApi\Api\Data\DemoSearchResultsInterface
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getList(SearchCriteriaInterface $searchCriteria)
+    {
+        $collection = $this->demoCollectionFactory->create();
+        $this->collectionProcessor->process($searchCriteria, $collection);
+        $searchResults = $this->searchResultsFactory->create();
+        $searchResults->setSearchCriteria($searchCriteria);
+        $searchResults->setItems($collection->getItems());
+        $searchResults->setTotalCount($collection->getSize());
+        return $searchResults;
+    }
+
+    /**
+     * Delete box.
+     *
+     * @param \Mageplaza\DemoWebApi\Api\Data\DemoInterface $box
+     * @return bool true on success
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function delete(DemoInterface $box)
+    {
+        try {
+            $this->demoResourceModel->delete($box);
+        } catch(\Exception $e) {
+            throw new CouldNotDeleteException(__($e->getMessage()));
+        }
+        return true;
+    }
+
+    /**
+     * Delete box by ID.
+     *
+     * @param int $boxId
+     * @return bool true on success
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function deleteById($boxId)
+    {
+        return $this->delete($this->getById($boxId));
     }
 }
