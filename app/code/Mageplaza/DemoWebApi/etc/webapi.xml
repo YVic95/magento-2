@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/boxyBox/:boxId" method="GET">
+        <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="getById" />
+        <resources>
+            <resource ref="Mageplaza_DemoWebApi::box_get" />
+        </resources>
+    </route>
+    <route url="/V1/boxyBox/search" method="GET">
+        <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="getList" />
+        <resources>
+            <resource ref="Mageplaza_DemoWebApi::box_search" />
+        </resources>
+    </route>
+    <route url="/V1/boxyBox" method="POST">
+        <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="save" />
+        <resources>
+            <resource ref="Mageplaza_DemoWebApi::box_save" />
+        </resources>
+    </route>
+    <route url="/V1/boxyBox/" method="POST">
+        <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="save" />
+        <resources>
+            <resource ref="Mageplaza_DemoWebApi::box_save" />
+        </resources>
+    </route>
+    <route url="/V1/boxyBox/:id" method="PUT">
+        <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="save" />
+        <resources>
+            <resource ref="Mageplaza_DemoWebApi::box_update" />
+        </resources>
+    </route>
+    <route url="/V1/boxyBox/:boxId" method="DELETE">
+        <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="deleteById" />
+        <resources>
+            <resource ref="Mageplaza_DemoWebApi::box_delete" />
+        </resources>
+    </route>
+</routes>
