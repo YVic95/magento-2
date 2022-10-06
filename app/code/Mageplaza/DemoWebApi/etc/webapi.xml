@@ -12,12 +12,6 @@
             <resource ref="Mageplaza_DemoWebApi::box_search" />
         </resources>
     </route>
-    <route url="/V1/boxyBox" method="POST">
-        <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="save" />
-        <resources>
-            <resource ref="Mageplaza_DemoWebApi::box_save" />
-        </resources>
-    </route>
     <route url="/V1/boxyBox/" method="POST">
         <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="save" />
         <resources>
