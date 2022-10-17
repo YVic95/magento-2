@@ -9,7 +9,7 @@ class Demo extends AbstractModel implements DemoInterface
 {
     protected function _construct()
     {
-        $this->_init(Demo::class);
+        $this->_init(DemoResource::class);
     }
 
     /**

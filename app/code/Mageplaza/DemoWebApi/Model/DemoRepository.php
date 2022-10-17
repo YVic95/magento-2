@@ -64,9 +64,11 @@ class DemoRepository implements DemoRepositoryInterface
     public function getById($boxId)
     {
         $box = $this->demoFactory->create();
+        $test = $box;
         $this->demoResourceModel->load($box, $boxId);
         if(!$box->getId()) {
-            throw new NoSuchEntityException(__('Box with id "%1" does not exist'));
+            //throw new NoSuchEntityException(__('Box with id "%1" does not exist'));
+            return "Box with id ".$boxId." does not exist";
         }
         return $box;
     }

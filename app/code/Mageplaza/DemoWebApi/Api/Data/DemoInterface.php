@@ -8,7 +8,7 @@ namespace Mageplaza\DemoWebApi\Api\Data;
  */
 interface DemoInterface
 {
-    const BOX_ID = 'box_id';
+    const BOX_ID = 'entity_id';
     const TITLE = 'title';
     const CONTENT = 'content';
 

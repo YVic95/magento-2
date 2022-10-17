@@ -3,31 +3,36 @@
     <route url="/V1/boxyBox/:boxId" method="GET">
         <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="getById" />
         <resources>
-            <resource ref="Mageplaza_DemoWebApi::box_get" />
+            <!-- <resource ref="Mageplaza_DemoWebApi::box_get" /> -->
+            <resource ref="anonymous" />
         </resources>
     </route>
     <route url="/V1/boxyBox/search" method="GET">
         <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="getList" />
         <resources>
-            <resource ref="Mageplaza_DemoWebApi::box_search" />
+            <!-- <resource ref="Mageplaza_DemoWebApi::box_search" /> -->
+            <resource ref="anonymous" />
         </resources>
     </route>
     <route url="/V1/boxyBox/" method="POST">
         <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="save" />
         <resources>
-            <resource ref="Mageplaza_DemoWebApi::box_save" />
+            <!-- <resource ref="Mageplaza_DemoWebApi::box_save" /> -->
+            <resource ref="anonymous" />
         </resources>
     </route>
     <route url="/V1/boxyBox/:id" method="PUT">
         <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="save" />
         <resources>
-            <resource ref="Mageplaza_DemoWebApi::box_update" />
+            <!-- <resource ref="Mageplaza_DemoWebApi::box_update" /> -->
+            <resource ref="anonymous" />
         </resources>
     </route>
     <route url="/V1/boxyBox/:boxId" method="DELETE">
         <service class="Mageplaza\DemoWebApi\Api\DemoRepositoryInterface" method="deleteById" />
         <resources>
-            <resource ref="Mageplaza_DemoWebApi::box_delete" />
+            <!-- <resource ref="Mageplaza_DemoWebApi::box_delete" /> -->
+            <resource ref="anonymous" />
         </resources>
     </route>
 </routes>
