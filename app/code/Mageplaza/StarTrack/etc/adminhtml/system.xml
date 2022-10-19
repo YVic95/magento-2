@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
+        <tab id="customtab" translate="label" sortOrder="10">
+            <label>My Custom Tab</label>
+        </tab>
         <section id="carriers">
+            <tab>customtab</tab>
             <group id="startrack" showInDefault="1" showInStore="1" sortOrder="1" translate="label">
                 <label>Star Track Shipping</label>
                 <!-- General options -->
