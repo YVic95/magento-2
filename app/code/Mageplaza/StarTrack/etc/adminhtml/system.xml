@@ -6,7 +6,7 @@
         </tab>
         <section id="carriers">
             <tab>customtab</tab>
-            <group id="startrack" showInDefault="1" showInStore="1" sortOrder="1" translate="label">
+            <group id="startrack" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label">
                 <label>Star Track Shipping</label>
                 <!-- General options -->
                 <field id="active" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
@@ -44,6 +44,33 @@
                     <label>Sort Order</label>
                     <validate>alphanumeric</validate>
                 </field>
+
+                <!-- Specific options -->
+                <group id="startrackstandard" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="110" translate="label">
+                    <label><![CDATA[The "StarTrack Standard" shipping method]]></label>
+                    <fieldset_css>complex</fieldset_css>
+                    <field id="title" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+                        <label><![CDATA[Title]]></label>
+                    </field>
+
+                    <field id="shippingcost" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+                        <label><![CDATA[Shipping Cost]]></label>
+                        <validate>alphanumeric</validate>
+                    </field>
+                </group>
+
+                <group id="startrack48h" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="120" translate="label">
+                    <label><![CDATA[The "StarTrack 48h" shipping method]]></label>
+                    <fieldset_css>complex</fieldset_css>
+                    <field id="title" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+                        <label><![CDATA[Title]]></label>
+                    </field>
+
+                    <field id="shippingcost" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+                        <label><![CDATA[Shipping Cost]]></label>
+                        <validate>alphanumeric</validate>
+                    </field>
+                </group>
             </group>
         </section>
     </system>
