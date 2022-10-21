@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <default>
+        <carriers>
+            <startrack>
+                <active>1</active>
+                <title>Star Track Shipping</title>
+                <sallowspecific>0</sallowspecific>
+				<showmethod>0</showmethod>
+                <specificerrmsg><![CDATA[The StarTrack shipping method is not available. To use this shipping method, please contact us.]]></specificerrmsg>
+                <sort_order>10</sort_order>
+                <!-- DONT FORGET TO UNCOMMENT-->
+                <!-- <model>Mageplaza\StarTrack\Model\Carrier\RoyalTrack</model> -->
+
+                <!-- Specific options -->
+                <startrackstandard>
+                    <title><![CDATA[StarTrack Standard]]></title>
+                    <shippingcost>4.99</shippingcost>
+                </startrackstandard>
+
+                <startrack48h>
+                    <title><![CDATA[StarTrack 48h]]></title>
+                    <shippingcost>9.99</shippingcost>
+                </startrack48h>
+            </startrack>
+        </carriers>
+    </default>
+</config>
