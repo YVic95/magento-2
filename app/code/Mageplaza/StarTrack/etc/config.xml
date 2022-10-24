@@ -10,7 +10,7 @@
                 <specificerrmsg><![CDATA[The StarTrack shipping method is not available. To use this shipping method, please contact us.]]></specificerrmsg>
                 <sort_order>10</sort_order>
                 <!-- DONT FORGET TO UNCOMMENT-->
-                <!-- <model>Mageplaza\StarTrack\Model\Carrier\RoyalTrack</model> -->
+                <model>Mageplaza\StarTrack\Model\Carrier\StarTrack</model>
 
                 <!-- Specific options -->
                 <startrackstandard>
