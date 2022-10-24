@@ -9,6 +9,7 @@ use Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory;
 use Psr\Log\LoggerInterface;
 use Magento\Shipping\Model\Rate\ResultFactory;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
+use Magento\Quote\Model\Quote\Address\RateRequest;
 
 class StarTrack extends AbstractCarrier implements CarrierInterface
 {
@@ -43,5 +44,116 @@ class StarTrack extends AbstractCarrier implements CarrierInterface
         $this->_rateResultFactory = $rateResultFactory;
         $this->_rateMethodFactory = $rateMethodFactory;
         parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function collectRates(RateRequest $request)
+    {
+        if (!$this->getConfigFlag('active')) {
+            return false;
+        }
+
+        /** 
+         * Init result object
+         * @var Result $result 
+         */
+        $result = $this->_rateResultFactory->create();
+
+        //$shippingPrice = $this->getShippingPrice($request);
+
+        //if ($shippingPrice !== false) {
+            $method = $this->createResultMethodStandard();//$shippingPrice;
+            $result->append($method);
+        //}
+
+        return $result;
+    }
+
+    /**
+     * Returns shipping price
+     *
+     * @param RateRequest $request
+     * @return bool|float
+     */
+    // private function getShippingPrice(RateRequest $request)
+    // {
+    //     $shippingPrice = false;
+
+    //     $configPrice = $this->getConfigData('price');
+    //     if ($this->getConfigData('type') === 'O') {
+    //         // per order
+    //         $shippingPrice = $this->itemPriceCalculator->getShippingPricePerOrder($request, $configPrice);
+    //     } elseif ($this->getConfigData('type') === 'I') {
+    //         // per item
+    //         $shippingPrice = $this->itemPriceCalculator->getShippingPricePerItem($request, $configPrice);
+    //     }
+
+    //     $shippingPrice = $this->getFinalPriceWithHandlingFee($shippingPrice);
+
+    //     return $shippingPrice;
+    // }
+
+    /**
+     * Get allowed shipping methods
+     *
+     * @return array
+     */
+    public function getAllowedMethods()
+    {
+        return [
+            self::STAR_TRACK_STANDARD => $this->getConfigData(self::STAR_TRACK_STANDARD . '/title'),
+            //self::ROYAL_TREK_48HR => $this->getConfigData(self::ROYAL_TREK_48HR . '/title'),
+        ];
+    }
+
+    /**
+     * Creates result method
+     *
+     * @param int|float $shippingPrice
+     * @return \Magento\Quote\Model\Quote\Address\RateResult\Method
+     */
+    private function createResultMethodStandard()//($shippingPrice)
+    {
+        /** @var \Magento\Quote\Model\Quote\Address\RateResult\Method $method */
+        $method = $this->_rateMethodFactory->create();
+
+        $method->setCarrier($this->_code);
+        $method->setCarrierTitle($this->getConfigData('title'));
+
+        $method->setMethod(self::STAR_TRACK_STANDARD);
+        $method->setMethodTitle($this->getMethodTitle($method->getMethod()));
+
+        $method->setPrice($this->getMethodPrice($method->getMethod()));
+        $method->setCost($this->getMethodCost($method->getMethod()));
+        return $method;
+    }
+
+    /**
+     * @param $method
+     * @return false|string
+     */
+    private function getMethodTitle($method)
+    {
+        return $this->getConfigData($method . '/title');
+    }
+
+    /**
+     * @param $method
+     * @return false|string
+     */
+    private function getMethodPrice($method)
+    {
+        return $this->getMethodCost($method);
+    }
+
+    /**
+     * @param $method
+     * @return false|string
+     */
+    private function getMethodCost($method)
+    {
+        return $this->getConfigData($method . '/shippingcost');
     }
 }
