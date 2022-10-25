@@ -10,6 +10,7 @@ use Psr\Log\LoggerInterface;
 use Magento\Shipping\Model\Rate\ResultFactory;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
 use Magento\Quote\Model\Quote\Address\RateRequest;
+use Magento\OfflineShipping\Model\Carrier\Flatrate\ItemPriceCalculator;
 
 class StarTrack extends AbstractCarrier implements CarrierInterface
 {
@@ -21,6 +22,7 @@ class StarTrack extends AbstractCarrier implements CarrierInterface
     protected $_isFixed = true;
     protected $_rateResultFactory;
     protected $_rateMethodFactory;
+    private $itemPriceCalculator;
 
     /**
      * Constructor
@@ -30,6 +32,7 @@ class StarTrack extends AbstractCarrier implements CarrierInterface
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Shipping\Model\Rate\ResultFactory $rateResultFactory
      * @param \Magento\Quote\Model\Quote\Address\RateResult\MethodFactory $rateMethodFactory
+     * @param ItemPriceCalculator $itemPriceCalculator
      * @param array $data 
      */
     public function __construct(
@@ -38,12 +41,14 @@ class StarTrack extends AbstractCarrier implements CarrierInterface
         LoggerInterface $logger,
         ResultFactory $rateResultFactory,
         MethodFactory $rateMethodFactory,
+        ItemPriceCalculator $itemPriceCalculator,
         array $data = []
     )
     {
         $this->_rateResultFactory = $rateResultFactory;
         $this->_rateMethodFactory = $rateMethodFactory;
-        parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
+        $this->itemPriceCalculator = $itemPriceCalculator;
+        parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);  
     }
 
     /**
@@ -61,10 +66,10 @@ class StarTrack extends AbstractCarrier implements CarrierInterface
          */
         $result = $this->_rateResultFactory->create();
 
-        //$shippingPrice = $this->getShippingPrice($request);
+        $shippingPrice = $this->getShippingPrice($request);
 
         //if ($shippingPrice !== false) {
-            $method = $this->createResultMethodStandard();//$shippingPrice;
+            $method = $this->createResultMethodStandard($shippingPrice);//$shippingPrice;
             $result->append($method);
         //}
 
@@ -75,25 +80,27 @@ class StarTrack extends AbstractCarrier implements CarrierInterface
      * Returns shipping price
      *
      * @param RateRequest $request
+     * 
      * @return bool|float
      */
-    // private function getShippingPrice(RateRequest $request)
-    // {
-    //     $shippingPrice = false;
+    private function getShippingPrice(RateRequest $request)
+    {
+        $shippingPrice = false;
+        $configPrice = $this->getConfigData('startrackstandard/shippingcost');
+        $shippingPrice = $this->itemPriceCalculator->getShippingPricePerItem($request, $configPrice, 0);
+        $weight = $request->getPackageWeight();
 
-    //     $configPrice = $this->getConfigData('price');
-    //     if ($this->getConfigData('type') === 'O') {
-    //         // per order
-    //         $shippingPrice = $this->itemPriceCalculator->getShippingPricePerOrder($request, $configPrice);
-    //     } elseif ($this->getConfigData('type') === 'I') {
-    //         // per item
-    //         $shippingPrice = $this->itemPriceCalculator->getShippingPricePerItem($request, $configPrice);
-    //     }
+        if ($request->getAllItems()) {
+            foreach ($request->getAllItems() as $item) {
+                if ($item->getProduct()->isVirtual() || $item->getParentItem()) {
+                    continue;
+                }
+                if($weight > 50) $shippingPrice *= 2;
+            }
+        }
 
-    //     $shippingPrice = $this->getFinalPriceWithHandlingFee($shippingPrice);
-
-    //     return $shippingPrice;
-    // }
+        return $shippingPrice;
+    }
 
     /**
      * Get allowed shipping methods
@@ -114,7 +121,7 @@ class StarTrack extends AbstractCarrier implements CarrierInterface
      * @param int|float $shippingPrice
      * @return \Magento\Quote\Model\Quote\Address\RateResult\Method
      */
-    private function createResultMethodStandard()//($shippingPrice)
+    private function createResultMethodStandard($shippingPrice)
     {
         /** @var \Magento\Quote\Model\Quote\Address\RateResult\Method $method */
         $method = $this->_rateMethodFactory->create();
@@ -125,8 +132,8 @@ class StarTrack extends AbstractCarrier implements CarrierInterface
         $method->setMethod(self::STAR_TRACK_STANDARD);
         $method->setMethodTitle($this->getMethodTitle($method->getMethod()));
 
-        $method->setPrice($this->getMethodPrice($method->getMethod()));
-        $method->setCost($this->getMethodCost($method->getMethod()));
+        $method->setPrice($shippingPrice);
+        $method->setCost($shippingPrice);
         return $method;
     }
 
@@ -137,23 +144,5 @@ class StarTrack extends AbstractCarrier implements CarrierInterface
     private function getMethodTitle($method)
     {
         return $this->getConfigData($method . '/title');
-    }
-
-    /**
-     * @param $method
-     * @return false|string
-     */
-    private function getMethodPrice($method)
-    {
-        return $this->getMethodCost($method);
-    }
-
-    /**
-     * @param $method
-     * @return false|string
-     */
-    private function getMethodCost($method)
-    {
-        return $this->getConfigData($method . '/shippingcost');
     }
 }
