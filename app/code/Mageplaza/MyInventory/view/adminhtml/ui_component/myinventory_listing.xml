@@ -13,6 +13,20 @@
         </deps>
     </settings>
     <!-- dataSource -->
+    <dataSource name="myinventory_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render">
+        </settings>
+        <dataProvider class="Mageplaza\MyInventory\Ui\DataProvider\Product\ProductDataProvider" name="myinventory_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
     <!-- listingToolbar -->
     <!-- columns -->
 </listing>
