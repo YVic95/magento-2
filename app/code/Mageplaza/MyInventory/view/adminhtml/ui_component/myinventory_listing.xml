@@ -18,7 +18,7 @@
             <storageConfig>
                 <param name="indexField" xsi:type="string">entity_id</param>
             </storageConfig>
-            <updateUrl path="mui/index/render">
+            <updateUrl path="mui/index/render" />
         </settings>
         <dataProvider class="Mageplaza\MyInventory\Ui\DataProvider\Product\ProductDataProvider" name="myinventory_listing_data_source">
             <settings>
@@ -31,9 +31,23 @@
     <listingToolbar name="listing_top">
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
-        <filters name="listing_filters" />
+        <filters name="listing_filters">
+            <filterSelect name="store_id" provider="${ $.parentName }">
+                <settings>
+                    <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options" />
+                    <caption translate="true">All Store View</caption>
+                    <label translate="true">Store View</label>
+                    <dataScope>store_id</dataScope>
+                </settings>
+            </filterSelect>
+        </filters>
         <paging name="listing_paging"/>
         <!-- massaction -->
+        <massaction name="listing_massaction">
+        
+        </massaction>
     </listingToolbar>
     <!-- columns -->
+    <columns name="myinventory_columns" class="Magento\Catalog\Ui\Component\Listing\Columns">
+    </columns>
 </listing>
