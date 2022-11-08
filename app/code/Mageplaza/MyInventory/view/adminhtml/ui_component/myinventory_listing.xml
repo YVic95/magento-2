@@ -43,8 +43,29 @@
         </filters>
         <paging name="listing_paging"/>
         <!-- massaction -->
-        <massaction name="listing_massaction">
-        
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="resupply">
+                <settings>
+                    <type>resupply</type>
+                    <label translate="true">Resupply</label>
+                    <actions>
+                        <action name="0">
+                            <type>resupply_10</type>
+                            <label translate="true">Resupply +10</label>
+                            <url path="myinventory/product/massResupply">
+                                <param name="qty">10</param>
+                            </url>
+                        </action>
+                        <action name="1">
+                            <type>resupply_50</type>
+                            <label translate="true">Resupply +50</label>
+                            <url path="myinventory/product/massResupply">
+                                <param name="qty">50</param>
+                            </url>
+                        </action>
+                    </actions>
+                </settings>
+            </action>
         </massaction>
     </listingToolbar>
     <!-- columns -->
