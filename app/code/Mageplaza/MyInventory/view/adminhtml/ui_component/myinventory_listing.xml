@@ -104,6 +104,15 @@
             </settings>
         </column>
         <!-- column #4 -->
+        <column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="30">
+            <settings>
+                <addField>true</addField>
+                <options class="Magento\Catalog\Model\Product\Attribute\Source\Status" />
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
         <!-- column #5 -->
         <!-- column #6 -->
     </columns>
