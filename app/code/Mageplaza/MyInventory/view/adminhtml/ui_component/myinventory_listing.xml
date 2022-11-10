@@ -114,6 +114,18 @@
             </settings>
         </column>
         <!-- column #5 -->
+        <column name="qty" sortOrder="40">
+            <settings>
+                <addField>true</addField>
+                <filter>textRange</filter>
+                <label translate="true">Quantity</label>
+            </settings>
+        </column>
         <!-- column #6 -->
+        <actionsColumn name="resupply" class="Mageplaza\MyInventory\Ui\Component\Listing\Columns\Resupply" sortOrder="50">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>
