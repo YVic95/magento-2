@@ -2,6 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Mageplaza_MyInventory::myinventory" title="My Custom Inventory" translate="title" module="Mageplaza_MyInventory" 
-             sortOrder="100" parent="Magento_Catalog::inventory" action="myinventory/product/index" resource="Mageplaza_MyInventory::myinventory" />
+             sortOrder="100" parent="Magento_Catalog::inventory" action="myinventory/product" resource="Mageplaza_MyInventory::myinventory" />
+        <add id="Mageplaza_MyInventory::myinventoryform" title="My Custom Inventory Form" translate="title" module="Mageplaza_MyInventory" 
+             sortOrder="120" parent="Magento_Catalog::inventory" action="myinventory/product/form" resource="Mageplaza_MyInventory::myinventoryform" />
     </menu>
 </config>
