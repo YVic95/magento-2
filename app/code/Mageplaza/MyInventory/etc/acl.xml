@@ -6,6 +6,7 @@
                 <resource id="Magento_Catalog::catalog">
                     <resource id="Magento_Catalog::catalog_inventory">
                         <resource id="Mageplaza_MyInventory::myinventory" title="Primitive Inventory" translate="title" sortOrder="30" />
+                        <resource id="Mageplaza_MyInventory::myinventoryform" title="Primitive Inventory Form" translate="title" sortOrder="40" />
                     </resource>
                 </resource>
             </resource>
