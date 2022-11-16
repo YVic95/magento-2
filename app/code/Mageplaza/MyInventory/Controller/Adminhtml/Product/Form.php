@@ -9,7 +9,7 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Mageplaza\MyInventory\Model\Resupply;
 
-class StockResupply extends Product
+class Form extends Product
 {
     protected $stockRegistry;
     protected $productRepository;
@@ -28,8 +28,14 @@ class StockResupply extends Product
         $this->resupply = $productRepository;
     }
 
+    /**
+     * @return void
+     */
     public function execute()
     {
+        // $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        // $resultPage->getConfig()->getTitle()->prepend((__('Stock Resupply')));
+        // return $resultPage;
         if($this->getRequest()->isPost()) {
             $this->resupply->resupply(
                 $this->getRequest()->getParam('id'),
