@@ -17,7 +17,7 @@
             <button name="back" class="Mageplaza\MyInventory\Block\Adminhtml\Product\Edit\Button\Back"/>
         </buttons> -->
     </settings>
-    <dataSource> -->
+    <!-- <dataSource> -->
     <dataSource name="myinventory_form_data_source">
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">

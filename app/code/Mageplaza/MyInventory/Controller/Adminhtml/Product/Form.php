@@ -25,7 +25,7 @@ class Form extends Product
         parent::__construct($context);
         $this->stockRegistry = $stockRegistry;
         $this->productRepository = $productRepository;
-        $this->resupply = $productRepository;
+        $this->resupply = $resupply;
     }
 
     /**
@@ -33,9 +33,6 @@ class Form extends Product
      */
     public function execute()
     {
-        // $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        // $resultPage->getConfig()->getTitle()->prepend((__('Stock Resupply')));
-        // return $resultPage;
         if($this->getRequest()->isPost()) {
             $this->resupply->resupply(
                 $this->getRequest()->getParam('id'),

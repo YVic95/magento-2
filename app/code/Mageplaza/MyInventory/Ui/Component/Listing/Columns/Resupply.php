@@ -31,7 +31,7 @@ class Resupply extends Column
             foreach($dataSource['data']['items'] as &$item) {
                 $item[$this->getData('name')]['resupply'] = [
                     'href' => $this->urlBuilder->getUrl(
-                            'myinventory/product/resupply', 
+                            'myinventory/product/form', 
                             ['id' => $item['entity_id'], 'store' => $storeId]
                     ),
                     'label' => __('Resupply'),
