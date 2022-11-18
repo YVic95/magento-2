@@ -12,10 +12,10 @@
     </argument>
     <settings>
         <!-- Buttons -->
-        <!-- <buttons>
-            <button name="save" class="Mageplaza\MyInventory\Block\Adminhtml\Product\Edit\Button\Save"/>
-            <button name="back" class="Mageplaza\MyInventory\Block\Adminhtml\Product\Edit\Button\Back"/>
-        </buttons> -->
+        <buttons>
+            <button name="save" class="Mageplaza\MyInventory\Block\Adminhtml\Edit\SaveButton"/>
+            <button name="back" class="Mageplaza\MyInventory\Block\Adminhtml\Edit\BackButton"/>
+        </buttons>
     </settings>
     <!-- <dataSource> -->
     <dataSource name="myinventory_form_data_source">
