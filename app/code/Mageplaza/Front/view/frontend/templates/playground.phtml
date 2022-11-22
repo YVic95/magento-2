@@ -1,0 +1,12 @@
+<!-- Declarative notation type using data-mage-init attribute -->
+<a data-mage-init='{"redirectUrl":{"url":"http://test.url"}}'>
+    <span><?= __('Test') ?></span>
+</a>
+<button type="button" data-mage-init='{"redirectUrl":{"url":"http://test.url"}}'>
+    <span><?= __('Test') ?></span>
+</button>
+<select data-mage-init='{"redirectUrl":{"event":"change"}}'>
+    <option value="http://test.url/1">Test#1</option>
+    <option value="http://test.url/2">Test#2</option>
+    <option value="http://test.url/3">Test#3</option>
+</select>
