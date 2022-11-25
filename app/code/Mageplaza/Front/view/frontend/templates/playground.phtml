@@ -37,3 +37,37 @@
         }
     }
 </script>
+
+<!-- Imperative notation type using <script> tag -->
+<div>
+    <a href="#" id="playgroundModalLink">Show modal!</a>
+</div>
+<div id="playgroundModal">
+    <p>Content...</p>
+</div>
+<script>
+    require([
+            'jquery',
+            'mage/translate',
+            'Magento_Ui/js/modal/modal'
+    ], function ($, $t, modal) {
+        $(function () {
+            var options = {
+                title: 'Playground Modal',
+                buttons: [{
+                    text: $t('Continue'),
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            modal(options, $('#playgroundModal'));
+
+            $('#playgroundModalLink').on('click', function () {
+                $('#playgroundModal').modal('openModal');
+            });
+        });
+       }
+    );
+</script>
