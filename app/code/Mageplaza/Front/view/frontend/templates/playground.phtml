@@ -71,3 +71,7 @@
        }
     );
 </script>
+
+<?php $helper = $this->helper('Magento\Framework\Json\Helper\Data') ?>
+<span data-mage-init='<?= $helper->jsonEncode(['welcome' => ['name' => 'John Doe']]) ?>'>
+</span>
