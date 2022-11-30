@@ -1,7 +1,8 @@
 var config = {
     map: {
         '*': {
-            welcome: 'Mageplaza_Front/js/welcome'
+            welcome: 'Mageplaza_Front/js/welcome',
+            popularProducts: 'Mageplaza_Front/js/popular-products'
         }
     },
     config: {
