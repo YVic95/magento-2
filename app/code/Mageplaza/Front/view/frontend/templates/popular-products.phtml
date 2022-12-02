@@ -1,0 +1,31 @@
+<?php $jsonHelper = $this->helper('Magento\Framework\Json\Helper\Data') ?>
+<div class="popular-products" data-bind="scope: 'popular-products-scope'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<!-- Magento_Ui/js/core/app is an alias for app.js, 
+     which creates the UI components instances -->
+<!--"component": "popularProducts", -->
+<script type="text/x-magento-init">
+    {
+        ".popular-products": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "popular-products-scope": {
+                        "component": "Mageplaza_Front/js/popular-products",
+                        "products": <?= $jsonHelper->jsonEncode([
+                            [
+                               'sku' => 'sku1',
+                               'title' => 'title1' 
+                            ],
+                            [
+                               'sku' => 'sku2',
+                               'title' => 'title2' 
+                            ],
+                        ]) ?>
+                    }
+                }
+            }
+        }
+    }
+</script>
