@@ -5,6 +5,7 @@
         <referenceContainer name="content">
             <block class="Mageplaza\Front\Block\Test" name="front_test" template="Mageplaza_Front::playground.phtml">
             </block>
+            <block name="popular_products" template="Mageplaza_Front::popular-products.phtml" />
         </referenceContainer>
     </body>
 </page>
