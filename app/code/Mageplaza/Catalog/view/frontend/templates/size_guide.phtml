@@ -1,0 +1,13 @@
+<?php
+echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')
+->setData(
+    [
+        'block_id' => $block->getBlockId(),
+        'css_class' => $block->getCssClass(),
+    ]
+)
+//->setBlockId($block->getBlockId())
+->toHtml();
+
+
+
