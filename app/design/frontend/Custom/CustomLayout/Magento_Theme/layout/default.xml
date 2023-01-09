@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="header.panel" htmlId="MyWrapper2">
+        <block class="Magento\Framework\View\Element\Html\Links" name="header.links" />
+    </referenceContainer>
     <referenceContainer name="footer-bottom-content">
         <block class="Magento\Framework\View\Element\Template" name="report.bugs.bottom" template="Magento_Theme::html/bugreport.phtml" />
     </referenceContainer>
