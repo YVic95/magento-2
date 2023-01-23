@@ -16,6 +16,16 @@
                     <argument name="title" translate="true" xsi:type="string">Size guide</argument>
                 </arguments>
             </block>
+            
         </referenceBlock>
+        <referenceContainer name="product.info.type">
+            <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.sku" template="Magento_Catalog::product/view/attribute.phtml" after="-">
+                <arguments>
+                    <argument name="at_call" xsi:type="string">getSku</argument>
+                    <argument name="at_code" xsi:type="string">sku</argument>
+                    <argument name="css_class" xsi:type="string">sku</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
     </body>
 </page>
