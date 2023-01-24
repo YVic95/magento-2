@@ -1,10 +1,15 @@
 <?xml version="1.0"?>
 
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <attribute name="class" value="my-new-body-class"/>
         <attribute name="data-role" value="my-body-role"/>
         <attribute name="id" value="my-new-body-id"/>
+        <referenceBlock name="page.main.title">
+            <arguments>
+                <argument name="css_class" xsi:type="string">my-new-block-class</argument>
+            </arguments>
+        </referenceBlock>
         <referenceBlock name="product.info.details">
             <block class="Magento\Catalog\Block\Product\View" name="test-tab" template="Mageplaza_Catalog::custom_tab.phtml" group="detailed_info">
                 <arguments>
@@ -27,6 +32,13 @@
                     <argument name="at_call" xsi:type="string">getSku</argument>
                     <argument name="at_code" xsi:type="string">sku</argument>
                     <argument name="css_class" xsi:type="string">sku</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content.bottom">
+            <block class="Magento\Cms\Block\Block" name="awesome-block" before="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">awesome-block</argument>
                 </arguments>
             </block>
         </referenceContainer>
