@@ -2,6 +2,9 @@
 
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <attribute name="class" value="my-new-body-class"/>
+        <attribute name="data-role" value="my-body-role"/>
+        <attribute name="id" value="my-new-body-id"/>
         <referenceBlock name="product.info.details">
             <block class="Magento\Catalog\Block\Product\View" name="test-tab" template="Mageplaza_Catalog::custom_tab.phtml" group="detailed_info">
                 <arguments>
