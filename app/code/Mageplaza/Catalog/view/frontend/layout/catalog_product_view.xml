@@ -5,13 +5,17 @@
         <attribute name="class" value="my-new-body-class"/>
         <attribute name="data-role" value="my-body-role"/>
         <attribute name="id" value="my-new-body-id"/>
+
         <referenceBlock name="page.main.title">
             <arguments>
                 <argument name="css_class" xsi:type="string">my-new-block-class</argument>
             </arguments>
         </referenceBlock>
         <referenceBlock name="product.info.details">
-            <block class="Magento\Catalog\Block\Product\View" name="test-tab" template="Mageplaza_Catalog::custom_tab.phtml" group="detailed_info">
+            <block class="Magento\Catalog\Block\Product\View" name="test-tab" group="detailed_info">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Mageplaza_Catalog::custom_tab.phtml</argument>
+                </action>
                 <arguments>
                     <argument name="title" translate="true" xsi:type="string">Custom tab</argument>
                 </arguments>
