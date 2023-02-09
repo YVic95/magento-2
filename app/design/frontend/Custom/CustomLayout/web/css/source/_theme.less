@@ -1,0 +1,29 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Custom theme overrides
+//  _____________________________________________
+
+//  Theme file should contain declarations (overrides) ONLY OF EXISTING variables
+//  Otherwise this theme won't be available for parent nesting
+//  All new variables should be placed in local theme lib or local theme files
+
+//  Color nesting
+@page__background-color: @color-yellow-light1;
+@sidebar__background-color: @color-yellow-light1;
+
+// Buttons
+@button__color: @color-gray20;
+@button__background: @color-brownie;
+@button__border: 1px solid @border-color__base;
+
+//  Primary button
+@button-primary__background: @color-orange-red1;
+@button-primary__border: 1px solid @color-orange-red2;
+@button-primary__color: @color-white;
+@button-primary__hover__background: darken(@color-orange-red1, 5%);
+@button-primary__hover__border: 1px solid @color-orange-red2;
+@button-primary__hover__color: @color-white;
