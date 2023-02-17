@@ -27,7 +27,7 @@ class Cutoff extends Template implements IdentityInterface
     {
         $timezone = new \DateTimeZone($this->localeDate->getConfigTimezone());
         $now = new \DateTime('now', $timezone);
-        $day = strtolower($now->format('l'));
+        $day = $now->format('l');
         $cutoffAt = $this->getProduct()->getData($day . '_cutoff_at');
 
         if($cutoffAt) {
@@ -50,6 +50,7 @@ class Cutoff extends Template implements IdentityInterface
         if(!$this->product) {
             $this->product = $this->coreRegistry->registry('product');
         }
+        return $this->product;
     }
 
     //Try to var_dump $identities
