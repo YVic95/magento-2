@@ -30,6 +30,10 @@
             </block>
             
         </referenceBlock>
+        <referenceContainer name="product.info.extrahint">
+            <block name="cutoff" class="Mageplaza\Catalog\Block\Product\View\Cutoff" template="Mageplaza_Catalog::product/view/cutoff.phtml">
+            </block>
+        </referenceContainer>
         <referenceContainer name="product.info.type">
             <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.sku" template="Magento_Catalog::product/view/attribute.phtml" after="-">
                 <arguments>
