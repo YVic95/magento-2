@@ -4,4 +4,7 @@
     <type name="Magento\Catalog\Helper\Product\View">
         <plugin name="custom_body_class" type="Mageplaza\Catalog\Plugin\AddBodyClass" />
     </type>
+    <type name="Magento\Catalog\Api\Data\ProductInterface">
+        <plugin name="newProductFlag" type="Mageplaza\Catalog\Plugin\NewProductFlag" />
+    </type>
 </config>
