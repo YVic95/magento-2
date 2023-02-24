@@ -30,7 +30,7 @@ class Process extends Index
             if($notes = $this->getRequest()->getParam('order_notes', null)) {
                 $quote = $this->checkoutSession->getQuote();
                 //or setOrderNotes ?
-                $quote->setOrderNote($notes);
+                $quote->setOrderNotes($notes);
                 $quote->save();
             }
 
