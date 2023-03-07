@@ -1,0 +1,35 @@
+define([
+    'uiComponent',
+    'jquery',
+    'mage/url',
+    'Magento_Customer/js/customer-data',
+    'Magento_Customer/js/model/customer'
+], function(Component, $, url, customerData, customer) {
+    'use strict';
+    
+    let contactPreferences = customerData.get('contact_preferences');
+
+    return Component.extend({
+        defaults: {
+            template: 'Mageplaza_ContactPreferences/contact/preferences'
+        },
+
+        initialize: function () {
+            this._super();
+
+            // Trigger "contact_preferences" section load
+            $.ajax({
+                type: 'POST',
+                url: url.build('customer/contact/preferences'),
+                data: {'load': true},
+                showLoader: true,
+            });
+        },
+
+        isCustomerLoggedIn: function () {},
+
+        getSelectOptions: function () {},
+
+        saveContactPreferences: function () {}
+    });
+});
