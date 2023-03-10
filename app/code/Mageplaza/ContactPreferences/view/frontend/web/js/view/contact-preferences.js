@@ -11,7 +11,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'Mageplaza_ContactPreferences/contact/preferences'
+            template: 'Mageplaza_ContactPreferences/contact-preferences'
         },
 
         initialize: function () {
