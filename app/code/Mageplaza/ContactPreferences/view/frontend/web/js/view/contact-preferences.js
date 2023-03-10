@@ -26,10 +26,32 @@ define([
             });
         },
 
-        isCustomerLoggedIn: function () {},
+        isCustomerLoggedIn: function () {
+            return contactPreferences().isCustomerLoggedIn;
+        },
 
-        getSelectOptions: function () {},
+        getSelectOptions: function () {
+            return contactPreferences().selectOptions;
+        },
 
-        saveContactPreferences: function () {}
+        saveContactPreferences: function () {
+            let preferences = {};
+
+            $('.contact-preference').children(':checkbox').each(function () {
+                preferences[$(this).attr('name')] = $(this).attr('checked') ? true : false;
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: url.build('customer/contact/preferences'),
+                data: preferences,
+                showLoader: true,
+                complete: function (response) {
+                    //some logic to implement
+                }
+            });
+
+            return true;
+        }
     });
 });
