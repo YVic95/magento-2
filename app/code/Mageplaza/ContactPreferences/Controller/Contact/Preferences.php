@@ -37,10 +37,11 @@ class Preferences extends AbstractAccount
                 // This POST request triggers "contact_preferences" section load
             } else {
                 try {
+                    $requestParams = $this->getRequest()->getParams();
                     $preferences = implode(',',
                         array_keys(
                             array_filter(
-                                $this->getRequest()->getParams(),
+                                $requestParams,
                                 function($_cheked, $_preference) {
                                     return filter_var($_cheked, FILTER_VALIDATE_BOOLEAN);
                                 },

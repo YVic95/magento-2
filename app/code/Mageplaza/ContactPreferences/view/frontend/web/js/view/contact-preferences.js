@@ -38,7 +38,7 @@ define([
             let preferences = {};
 
             $('.contact-preference').children(':checkbox').each(function () {
-                preferences[$(this).attr('name')] = $(this).attr('checked') ? true : false;
+                preferences[$(this).attr('name')] = $(this).is(':checked') ? true : false;
             });
 
             $.ajax({
