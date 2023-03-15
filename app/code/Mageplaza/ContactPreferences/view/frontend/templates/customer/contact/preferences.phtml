@@ -1,0 +1,18 @@
+<div class="contact-preferences" data-bind="scope: 'contact-preferences-scope'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<!-- Contact Preferences Component -->
+<script type="text/x-magento-init">
+    {
+        ".contact-preferences": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "contact-preferences-scope": {
+                        "component": "contactPreferences"
+                    }
+                }
+            }
+        }
+    }
+</script>
