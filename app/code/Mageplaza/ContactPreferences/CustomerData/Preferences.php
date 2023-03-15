@@ -5,6 +5,8 @@ namespace Mageplaza\ContactPreferences\CustomerData;
 use Magento\Framework\DataObject;
 use Magento\Customer\CustomerData\SectionSourceInterface;
 
+// Customer Data for section saving
+
 class Preferences extends DataObject implements SectionSourceInterface
 {
     protected $preferences;
