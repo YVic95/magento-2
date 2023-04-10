@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="customer_note" translate="label,description" instance="Mageplaza\OrderNote\Model\Cache\Type\Note">
+        <label>Customer Note</label>
+        <description>Customer Note</description>
+    </type>
+</config>
